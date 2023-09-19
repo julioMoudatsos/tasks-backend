@@ -65,7 +65,7 @@ public class TaskTest {
             erro = e.toString();
         }
 
-        Assert.assertNull(erro);
+        Assert.assertNotNull(erro);
     }
 
     @Test
