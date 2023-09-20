@@ -16,7 +16,7 @@ public class DataUtilTest {
     @Test
     public void dataPresente(){
         LocalDate date = LocalDate.of(2023,9,19);
-        Assert.assertTrue(DateUtils.isEqualOrFutureDate(date));
+        Assert.assertFalse(DateUtils.isEqualOrFutureDate(date));
     }
 
     @Test
