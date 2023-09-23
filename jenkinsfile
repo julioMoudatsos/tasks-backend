@@ -15,7 +15,7 @@ pipeline {
 
         stage('Fim') {
             steps {
-                bat 'echo fim'
+                bat 'echo fim.'
             }
         }
     }
