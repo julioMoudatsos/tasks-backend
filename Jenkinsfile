@@ -37,6 +37,23 @@ pipeline {
      stage ('API Test') {
             steps {
                 dir('api-test') {
+                    git  url: 'https://github.com/julioMoudatsos/wcApiTest'
+                    bat 'mvn test'
+                }
+            }
+        }
+     stage ('Deploy Frontend') {
+            steps {
+                dir('frontend') {
+                    git  url: 'https://github.com/julioMoudatsos/tasks-frontend'
+                    bat 'mvn clean package'
+                    deploy adapters: [tomcat8(credentialsId: 'login', path: '', url: 'http://localhost:8001')], contextPath: 'tasks', war: 'target/tasks.war'
+                }
+            }
+        }
+        stage ('Functional Test') {
+            steps {
+                dir('functional-test') {
                     git  url: 'https://github.com/julioMoudatsos/wcFuncionalTest'
                     bat 'mvn test'
                 }
